@@ -30,9 +30,9 @@ func HammingDistance(x, y uint64) uint64 {
 // HammingDistanceDummy is unoptimised dummy version
 // to calculate Hamming distance
 func HammingDistanceDummy(x, y uint64) uint64 {
-	// binary represantation of 1st number
+	// binary representation of 1st number
 	s1 := strconv.FormatUint(x, 2)
-	// binary represantation of 2nd number
+	// binary representation of 2nd number
 	s2 := strconv.FormatUint(y, 2)
 	// completes strings if they have not equal lengths
 	// for example, s1="1001", s2="111000"
