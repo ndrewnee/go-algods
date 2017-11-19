@@ -26,10 +26,14 @@ func TestHammingDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := HammingDistance(tt.args.x, tt.args.y)
-			dummy := HammingDistanceDummy(tt.args.x, tt.args.y)
-			assert.Equal(t, tt.want, got)
-			assert.Equal(t, tt.want, dummy)
+			t.Run("HammingDistance", func(t *testing.T) {
+				got := HammingDistance(tt.args.x, tt.args.y)
+				assert.Equal(t, tt.want, got)
+			})
+			t.Run("HammingDistanceDummy", func(t *testing.T) {
+				dummy := HammingDistanceDummy(tt.args.x, tt.args.y)
+				assert.Equal(t, tt.want, dummy)
+			})
 		})
 	}
 }

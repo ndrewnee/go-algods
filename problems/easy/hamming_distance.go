@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// HammingDistance calculates the Hamming distace.
+// HammingDistance calculates the Hamming distance.
 // The Hamming distance between two integers is the number of positions
 // at which the corresponding bits are different.
 func HammingDistance(x, y uint64) uint64 {

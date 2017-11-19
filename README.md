@@ -16,4 +16,5 @@ Golang fork of [Algorithms and Data structures written in Java](https://github.c
 
 ### Easy
 
-* [Hamming Distance](https://github.com/ndrewnee/go-algods/blob/master/problems/easy/hamming.go)
+* [Hamming Distance](https://github.com/ndrewnee/go-algods/blob/master/problems/easy/hamming_distance.go)
+* [Single Number](https://github.com/ndrewnee/go-algods/blob/master/problems/easy/single_number.go)
