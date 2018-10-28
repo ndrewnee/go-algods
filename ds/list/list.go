@@ -13,11 +13,13 @@ func (n *Node) Prev() interface{}  { return n.prev }
 type List struct {
 	head *Node
 	tail *Node
+	size int
 }
 
-func New() *List {
-	return &List{}
-}
+func New() *List            { return &List{} }
+func (l *List) Head() *Node { return l.head }
+func (l *List) Tail() *Node { return l.tail }
+func (l *List) Size() int   { return l.size }
 
 func (l *List) Traverse(doSmth func(node *Node) (stop bool)) {
 	node := l.head
@@ -47,6 +49,7 @@ func (l *List) InsertAfter(node *Node, value interface{}) *Node {
 	}
 
 	node.next = newNode
+	l.size++
 	return newNode
 }
 
@@ -68,6 +71,7 @@ func (l *List) InsertBefore(node *Node, value interface{}) *Node {
 	}
 
 	node.prev = newNode
+	l.size++
 	return newNode
 }
 
@@ -79,6 +83,7 @@ func (l *List) PushFront(value interface{}) *Node {
 	newNode := &Node{value: value}
 	l.head = newNode
 	l.tail = newNode
+	l.size++
 
 	return newNode
 }
@@ -107,6 +112,8 @@ func (l *List) Remove(node *Node) {
 	} else {
 		l.head = node.next
 	}
+
+	l.size--
 }
 
 func (l *List) Union(list *List) *List {
