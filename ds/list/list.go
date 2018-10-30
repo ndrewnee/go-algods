@@ -7,8 +7,8 @@ type Node struct {
 }
 
 func (n *Node) Value() interface{} { return n.value }
-func (n *Node) Next() interface{}  { return n.next }
-func (n *Node) Prev() interface{}  { return n.prev }
+func (n *Node) Next() *Node        { return n.next }
+func (n *Node) Prev() *Node        { return n.prev }
 
 type List struct {
 	head *Node
@@ -21,10 +21,23 @@ func (l *List) Head() *Node { return l.head }
 func (l *List) Tail() *Node { return l.tail }
 func (l *List) Size() int   { return l.size }
 
-func (l *List) Traverse(doSmth func(node *Node) (stop bool)) *Node {
-	for node := l.head; node != nil; node = node.next {
+func (l *List) Traverse(doSmth func(node *Node) (stop bool), reverse bool) *Node {
+	var node *Node
+	if reverse {
+		node = l.tail
+	} else {
+		node = l.head
+	}
+
+	for node != nil {
 		if doSmth(node) {
 			return node
+		}
+
+		if reverse {
+			node = node.prev
+		} else {
+			node = node.next
 		}
 	}
 
