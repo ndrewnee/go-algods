@@ -21,14 +21,14 @@ func (l *List) Head() *Node { return l.head }
 func (l *List) Tail() *Node { return l.tail }
 func (l *List) Size() int   { return l.size }
 
-func (l *List) Traverse(doSmth func(node *Node) (stop bool)) {
-	node := l.head
-	for node != nil {
+func (l *List) Traverse(doSmth func(node *Node) (stop bool)) *Node {
+	for node := l.head; node != nil; node = node.next {
 		if doSmth(node) {
-			return
+			return node
 		}
-		node = node.next
 	}
+
+	return nil
 }
 
 func (l *List) InsertAfter(node *Node, value interface{}) *Node {

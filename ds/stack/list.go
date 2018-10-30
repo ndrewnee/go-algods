@@ -6,15 +6,20 @@ type ListStack struct {
 	list *list.List
 }
 
-func NewListStack() Stack                   { return &ListStack{list: list.New()} }
-func (s *ListStack) Size() int              { return s.list.Size() }
-func (s *ListStack) IsEmpty() bool          { return s.list.Size() == 0 }
-func (s *ListStack) Reset()                 { s.list = list.New() }
-func (s *ListStack) Push(value interface{}) { _ = s.list.PushFront(value) }
+func NewListStack() *ListStack {
+	return &ListStack{list: list.New()}
+}
+
+func (s *ListStack) Push(value interface{}) {
+	_ = s.list.PushFront(value)
+}
 
 func (s *ListStack) Pop() interface{} {
-	if head := s.list.Head(); head != nil {
-		return head.Value()
+	head := s.list.Head()
+	if head == nil {
+		return nil
 	}
-	return nil
+
+	s.list.Remove(head)
+	return head.Value()
 }

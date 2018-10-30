@@ -4,11 +4,13 @@ type SliceStack struct {
 	values []interface{}
 }
 
-func NewSliceStack() Stack                   { return &SliceStack{} }
-func (s *SliceStack) Size() int              { return len(s.values) }
-func (s *SliceStack) IsEmpty() bool          { return len(s.values) == 0 }
-func (s *SliceStack) Reset()                 { s.values = nil }
-func (s *SliceStack) Push(value interface{}) { s.values = append(s.values, value) }
+func NewSliceStack() *SliceStack {
+	return &SliceStack{}
+}
+
+func (s *SliceStack) Push(value interface{}) {
+	s.values = append(s.values, value)
+}
 
 func (s *SliceStack) Pop() interface{} {
 	length := len(s.values)
