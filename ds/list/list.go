@@ -140,6 +140,8 @@ func (l *List) Union(list *List) *List {
 
 	l.tail.next = list.head
 	list.head.prev = l.tail
+	l.tail = list.tail
 	l.size += list.size
+
 	return l
 }

@@ -42,6 +42,37 @@ func TestList(t *testing.T) {
 		}
 	})
 
+	t.Run("shouldn't panic when some of lists empty", func(t *testing.T) {
+		list = list.Union(nil)
+		list = list.Union(New())
+		assert.Equal(t, 7, list.Size())
+		assert.Equal(t, 6, list.Tail().Value())
+
+		var nilList *List
+		list = nilList.Union(list)
+		assert.Equal(t, 7, list.Size())
+		assert.Equal(t, 6, list.Tail().Value())
+	})
+
+	t.Run("should correctly union two lists", func(t *testing.T) {
+		secondList := New()
+		secondList.PushBack(8)
+		secondList.PushBack(9)
+		list = list.Union(secondList)
+
+		assert.Equal(t, 9, list.Size())
+		assert.Equal(t, 9, list.Tail().Value())
+		assert.Equal(t, 6, list.Tail().Prev().Prev().Value())
+
+		values := []int{3, 2, 5, 7, 4, 1, 6, 8, 9}
+		node := list.Head()
+		for _, value := range values {
+			require.NotNil(t, node)
+			assert.Equal(t, value, node.Value())
+			node = node.Next()
+		}
+	})
+
 	t.Run("should remove till Node = 4", func(t *testing.T) {
 		found := list.Traverse(func(node *Node) bool {
 			if node.Value() == 4 {
@@ -52,7 +83,7 @@ func TestList(t *testing.T) {
 			return false
 		}, false)
 
-		assert.Equal(t, 3, list.Size())
+		assert.Equal(t, 5, list.Size())
 		assert.Equal(t, n4, found)
 	})
 
