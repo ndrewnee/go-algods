@@ -4,7 +4,7 @@ type SliceQueue struct {
 	values []interface{}
 }
 
-func New() *SliceQueue {
+func NewSliceQueue() *SliceQueue {
 	return &SliceQueue{}
 }
 

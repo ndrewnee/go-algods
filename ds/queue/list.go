@@ -15,11 +15,11 @@ func (q *ListQueue) Enqueue(value interface{}) {
 }
 
 func (q *ListQueue) Dequeue() interface{} {
-	tail := q.list.Tail()
-	if tail == nil {
+	head := q.list.Head()
+	if head == nil {
 		return nil
 	}
 
-	q.list.Remove(tail)
-	return tail.Value()
+	q.list.Remove(head)
+	return head.Value()
 }
