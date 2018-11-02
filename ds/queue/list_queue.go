@@ -2,6 +2,8 @@ package queue
 
 import "github.com/ndrewnee/go-algods/ds/list"
 
+var _ Queue = &ListQueue{}
+
 type ListQueue struct {
 	list *list.List
 }

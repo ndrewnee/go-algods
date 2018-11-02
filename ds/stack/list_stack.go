@@ -2,6 +2,8 @@ package stack
 
 import "github.com/ndrewnee/go-algods/ds/list"
 
+var _ Stack = &ListStack{}
+
 type ListStack struct {
 	list *list.List
 }

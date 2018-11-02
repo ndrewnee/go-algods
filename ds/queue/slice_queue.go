@@ -1,5 +1,7 @@
 package queue
 
+var _ Queue = &SliceQueue{}
+
 type SliceQueue struct {
 	values []interface{}
 }

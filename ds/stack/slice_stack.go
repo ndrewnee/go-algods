@@ -1,5 +1,7 @@
 package stack
 
+var _ Stack = &SliceStack{}
+
 type SliceStack struct {
 	values []interface{}
 }
