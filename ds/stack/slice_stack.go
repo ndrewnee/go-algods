@@ -24,3 +24,17 @@ func (s *SliceStack) Pop() interface{} {
 	s.values = s.values[:length-1]
 	return value
 }
+
+func (s *SliceStack) Top() interface{} {
+	length := len(s.values)
+	if length == 0 {
+		return nil
+	}
+
+	value := s.values[length-1]
+	return value
+}
+
+func (s *SliceStack) Size() int {
+	return len(s.values)
+}

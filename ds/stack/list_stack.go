@@ -25,3 +25,16 @@ func (s *ListStack) Pop() interface{} {
 	s.list.Remove(head)
 	return head.Value()
 }
+
+func (s *ListStack) Top() interface{} {
+	head := s.list.Head()
+	if head == nil {
+		return nil
+	}
+
+	return head.Value()
+}
+
+func (s *ListStack) Size() int {
+	return s.list.Size()
+}
