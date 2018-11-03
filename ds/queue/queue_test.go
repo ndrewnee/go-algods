@@ -19,6 +19,10 @@ func TestQueue(t *testing.T) {
 			name:  "should correctly work with ListQueue",
 			queue: NewListQueue(),
 		},
+		{
+			name:  "should correctly work with StackQueue",
+			queue: NewStackQueue(),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
