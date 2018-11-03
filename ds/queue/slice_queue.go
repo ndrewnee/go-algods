@@ -23,3 +23,7 @@ func (q *SliceQueue) Dequeue() interface{} {
 	q.values = q.values[1:]
 	return value
 }
+
+func (q *SliceQueue) Size() int {
+	return len(q.values)
+}

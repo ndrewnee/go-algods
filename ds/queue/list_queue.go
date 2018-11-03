@@ -25,3 +25,7 @@ func (q *ListQueue) Dequeue() interface{} {
 	q.list.Remove(head)
 	return head.Value()
 }
+
+func (q *ListQueue) Size() int {
+	return q.list.Size()
+}
