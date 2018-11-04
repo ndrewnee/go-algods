@@ -37,6 +37,14 @@ func TestIsValidParentheses(t *testing.T) {
 			want: false,
 		},
 		{
+			name: "should return false because str is invalid #4",
+			args: args{
+				str: "][",
+			},
+			want: false,
+		},
+
+		{
 			name: "should return true because str is valid #1",
 			args: args{
 				str: "{()[]([])}",
