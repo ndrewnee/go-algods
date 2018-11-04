@@ -53,3 +53,11 @@ func (d *ListDeque) Back() interface{} {
 	}
 	return tail.Value()
 }
+
+func (d *ListDeque) Size() int {
+	return d.list.Size()
+}
+
+func (d *ListDeque) Empty() bool {
+	return d.list.Size() == 0
+}

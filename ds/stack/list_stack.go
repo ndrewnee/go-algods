@@ -38,3 +38,7 @@ func (s *ListStack) Top() interface{} {
 func (s *ListStack) Size() int {
 	return s.list.Size()
 }
+
+func (s *ListStack) Empty() bool {
+	return s.list.Size() == 0
+}

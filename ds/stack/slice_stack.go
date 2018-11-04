@@ -38,3 +38,7 @@ func (s *SliceStack) Top() interface{} {
 func (s *SliceStack) Size() int {
 	return len(s.values)
 }
+
+func (s *SliceStack) Empty() bool {
+	return len(s.values) == 0
+}

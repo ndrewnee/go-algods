@@ -29,3 +29,7 @@ func (q *ListQueue) Dequeue() interface{} {
 func (q *ListQueue) Size() int {
 	return q.list.Size()
 }
+
+func (q *ListQueue) Empty() bool {
+	return q.list.Size() == 0
+}

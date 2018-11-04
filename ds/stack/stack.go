@@ -5,4 +5,5 @@ type Stack interface {
 	Pop() interface{}
 	Top() interface{}
 	Size() int
+	Empty() bool
 }

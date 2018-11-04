@@ -55,3 +55,11 @@ func (d *SliceDeque) Front() interface{} {
 
 	return d.values[0]
 }
+
+func (d *SliceDeque) Size() int {
+	return len(d.values)
+}
+
+func (d *SliceDeque) Empty() bool {
+	return len(d.values) == 0
+}

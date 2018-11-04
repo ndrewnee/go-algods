@@ -27,3 +27,7 @@ func (q *SliceQueue) Dequeue() interface{} {
 func (q *SliceQueue) Size() int {
 	return len(q.values)
 }
+
+func (q *SliceQueue) Empty() bool {
+	return len(q.values) == 0
+}

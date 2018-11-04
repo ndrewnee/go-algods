@@ -7,4 +7,6 @@ type Deque interface {
 	PopFront() interface{}
 	Back() interface{}
 	Front() interface{}
+	Size() int
+	Empty() bool
 }

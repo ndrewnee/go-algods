@@ -12,7 +12,7 @@ func IsValidParentheses(str string) bool {
 			continue
 		}
 
-		if stack.Size() == 0 {
+		if stack.Empty() {
 			return false
 		}
 
@@ -23,5 +23,5 @@ func IsValidParentheses(str string) bool {
 		}
 	}
 
-	return stack.Size() == 0
+	return stack.Empty()
 }

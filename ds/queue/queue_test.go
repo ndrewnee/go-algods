@@ -28,11 +28,14 @@ func TestQueue(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			tt.queue.Enqueue(1)
 			tt.queue.Enqueue(2)
+
+			assert.False(t, tt.queue.Empty())
 			assert.Equal(t, 2, tt.queue.Size())
 			assert.Equal(t, 1, tt.queue.Dequeue())
+			assert.Equal(t, 1, tt.queue.Size())
 			assert.Equal(t, 2, tt.queue.Dequeue())
 			assert.Nil(t, tt.queue.Dequeue())
-			assert.Equal(t, 0, tt.queue.Size())
+			assert.True(t, tt.queue.Empty())
 		})
 	}
 }

@@ -30,3 +30,7 @@ func (q *StackQueue) Dequeue() interface{} {
 func (q *StackQueue) Size() int {
 	return q.left.Size() + q.right.Size()
 }
+
+func (q *StackQueue) Empty() bool {
+	return q.Size() == 0
+}

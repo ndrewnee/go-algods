@@ -25,15 +25,20 @@ func TestStack(t *testing.T) {
 			tt.deque.PushBack(2)
 			tt.deque.PushFront(1)
 			tt.deque.PushBack(3)
+
+			assert.False(t, tt.deque.Empty())
+			assert.Equal(t, 3, tt.deque.Size())
 			assert.Equal(t, 3, tt.deque.Back())
 			assert.Equal(t, 1, tt.deque.Front())
 			assert.Equal(t, 3, tt.deque.PopBack())
+			assert.Equal(t, 2, tt.deque.Size())
 			assert.Equal(t, 2, tt.deque.PopBack())
 			assert.Equal(t, 1, tt.deque.PopFront())
 			assert.Nil(t, tt.deque.PopBack())
 			assert.Nil(t, tt.deque.PopFront())
 			assert.Nil(t, tt.deque.Back())
 			assert.Nil(t, tt.deque.Front())
+			assert.True(t, tt.deque.Empty())
 		})
 	}
 }
