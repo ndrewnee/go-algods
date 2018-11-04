@@ -4,24 +4,38 @@ import (
 	"github.com/ndrewnee/go-algods/ds/stack"
 )
 
-func IsValidParentheses(str string) bool {
+type Parentheses struct {
+	Rune  rune
+	Index int
+}
+
+func IsValidParentheses(str string) (Parentheses, bool) {
 	stack := stack.NewSliceStack()
-	for _, r := range str {
+	for i, r := range str {
 		if r == '(' || r == '[' || r == '{' {
-			stack.Push(r)
+			stack.Push(Parentheses{Rune: r, Index: i})
+			continue
+		}
+
+		if r != ')' && r != ']' && r != '}' {
 			continue
 		}
 
 		if stack.Empty() {
-			return false
+			return Parentheses{Rune: r, Index: i}, false
 		}
 
-		topRaw := stack.Pop()
-		top := topRaw.(rune)
+		top := (stack.Pop().(Parentheses)).Rune
 		if top == '(' && r != ')' || top == '[' && r != ']' || top == '{' && r != '}' {
-			return false
+			return Parentheses{Rune: r, Index: i}, false
 		}
 	}
 
-	return stack.Empty()
+	ok := stack.Empty()
+	if !ok {
+		top := stack.Top().(Parentheses)
+		return top, false
+	}
+
+	return Parentheses{}, true
 }
