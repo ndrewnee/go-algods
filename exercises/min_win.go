@@ -1,34 +1,12 @@
 package exercises
 
-import "github.com/ndrewnee/go-algods/ds/deque"
-
-type MinQueue struct {
-	deque deque.Deque
+type MinQueue interface {
+	Min() int
+	Push(value int)
+	Pop(value int)
 }
 
-func NewMinQueue() *MinQueue {
-	return &MinQueue{deque: deque.NewSliceDeque()}
-}
-
-func (md *MinQueue) Min() int {
-	return md.deque.Front().(int)
-}
-
-func (md *MinQueue) Push(addedValue int) {
-	for !md.deque.Empty() && md.deque.Back().(int) > addedValue {
-		md.deque.PopBack()
-	}
-
-	md.deque.PushBack(addedValue)
-}
-
-func (md *MinQueue) Pop(removedValue int) {
-	if !md.deque.Empty() && md.deque.Front().(int) == removedValue {
-		md.deque.PopFront()
-	}
-}
-
-func FindMinWindows(numbers []int, windowSize int) []int {
+func findMinWindows(minQueue MinQueue, numbers []int, windowSize int) []int {
 	length := len(numbers)
 	if length == 0 {
 		return nil
@@ -42,7 +20,6 @@ func FindMinWindows(numbers []int, windowSize int) []int {
 		return []int{findMin(numbers)}
 	}
 
-	minQueue := NewMinQueue()
 	for i := 0; i < windowSize; i++ {
 		minQueue.Push(numbers[i])
 	}

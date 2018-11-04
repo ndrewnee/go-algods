@@ -62,8 +62,10 @@ func TestFindMinWindows(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := FindMinWindows(tt.args.numbers, tt.args.windowSize)
-			assert.Equal(t, tt.want, got)
+			got1 := FindMinWindows1(tt.args.numbers, tt.args.windowSize)
+			got2 := FindMinWindows2(tt.args.numbers, tt.args.windowSize)
+			assert.Equal(t, tt.want, got1)
+			assert.Equal(t, tt.want, got2)
 		})
 	}
 }
