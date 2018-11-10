@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/ndrewnee/go-algods/exercises"
 )
@@ -13,23 +15,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	numbers := make([]int, n)
+	queries := make([]string, n)
+	scanner := bufio.NewScanner(os.Stdin)
 	for i := 0; i < n; i++ {
-		var number int
-		if _, err := fmt.Scan(&number); err != nil {
-			log.Fatal(err)
-		}
-		numbers[i] = number
+		scanner.Scan()
+		queries[i] = scanner.Text()
 	}
 
-	var windowSize int
-	if _, err := fmt.Scan(&windowSize); err != nil {
-		log.Fatal(err)
-	}
-
-	maxWindows := exercises.FindMaxWindows(numbers, windowSize)
-	for _, max := range maxWindows {
-		fmt.Print(max, " ")
-	}
-	fmt.Println()
+	exercises.MaxStackHandler(queries)
 }
