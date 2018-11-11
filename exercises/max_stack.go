@@ -16,7 +16,7 @@ func MaxStackHandler(queries []string) {
 			valueString := strings.TrimPrefix(query, "push ")
 			value, err := strconv.Atoi(valueString)
 			if err != nil {
-				log.Fatal("convert string to int failed", err)
+				log.Println("convert string to int failed", err)
 				continue
 			}
 
