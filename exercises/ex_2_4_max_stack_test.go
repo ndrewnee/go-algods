@@ -13,6 +13,7 @@ func TestMaxStackHandler(t *testing.T) {
 		"push 9",
 		"push 7",
 		"push 2",
+		"push non-integer",
 		"max",
 		"max",
 		"max",
