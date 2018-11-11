@@ -1,10 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/ndrewnee/go-algods/exercises"
 )
@@ -14,13 +12,15 @@ func main() {
 	if _, err := fmt.Scan(&n); err != nil {
 		log.Fatal(err)
 	}
-
-	queries := make([]string, n)
-	scanner := bufio.NewScanner(os.Stdin)
+	tree := make([]int, n)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		queries[i] = scanner.Text()
+		var number int
+		if _, err := fmt.Scan(&number); err != nil {
+			log.Fatal(err)
+		}
+		tree[i] = number
 	}
 
-	exercises.MaxStackHandler(queries)
+	height := exercises.Height(tree)
+	fmt.Println(height)
 }
