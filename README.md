@@ -10,11 +10,6 @@
 
 Implementation of Algorithms and Data Structures in Golang.
 
-Golang fork of [Algorithms and Data structures written in Java](https://github.com/sherxon/AlgoDS).
+## Problems (https://leetcode.com/problemset/algorithms/)
 
-## Problems
-
-### Easy
-
-* [Hamming Distance](https://github.com/ndrewnee/go-algods/blob/master/problems/easy/hamming_distance.go)
-* [Single Number](https://github.com/ndrewnee/go-algods/blob/master/problems/easy/single_number.go)
+- [Easy](https://github.com/ndrewnee/go-algods/blob/master/problems/easy.go)
