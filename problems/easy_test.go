@@ -16,13 +16,13 @@ func Test_hammingDistance(t *testing.T) {
 		args args
 		want int
 	}{
-		{"1", args{0, 1}, 1},
-		{"2", args{0, 0}, 0},
-		{"3", args{6, 0}, 2},
-		{"4", args{65280, 255}, 16},
-		{"5", args{2, 0}, 1},
-		{"6", args{4, 5}, 1},
-		{"7", args{127, 126}, 1},
+		{name: "1", args: args{x: 0, y: 1}, want: 1},
+		{name: "2", args: args{x: 0, y: 0}, want: 0},
+		{name: "3", args: args{x: 6, y: 0}, want: 2},
+		{name: "4", args: args{x: 65280, y: 255}, want: 16},
+		{name: "5", args: args{x: 2, y: 0}, want: 1},
+		{name: "6", args: args{x: 4, y: 5}, want: 1},
+		{name: "7", args: args{x: 127, y: 126}, want: 1},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -41,10 +41,10 @@ func Test_singleNumber(t *testing.T) {
 		args args
 		want int
 	}{
-		{"1", args{[]int{1, 2, 2, 3, 3, 4, 4}}, 1},
-		{"2", args{[]int{2, 2, 1, 3, 1, 3, 4, 4, 5}}, 5},
-		{"3", args{[]int{2, 2, 3, 6, 3, 4, 4}}, 6},
-		{"4", args{[]int{12, 1, 12, 3, 1, 2, 3}}, 2},
+		{name: "1", args: args{numbers: []int{1, 2, 2, 3, 3, 4, 4}}, want: 1},
+		{name: "2", args: args{numbers: []int{2, 2, 1, 3, 1, 3, 4, 4, 5}}, want: 5},
+		{name: "3", args: args{numbers: []int{2, 2, 3, 6, 3, 4, 4}}, want: 6},
+		{name: "4", args: args{numbers: []int{12, 1, 12, 3, 1, 2, 3}}, want: 2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
