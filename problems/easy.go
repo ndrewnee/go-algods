@@ -202,3 +202,30 @@ func getRomanValue(b byte) int {
 		return 0
 	}
 }
+
+// https://leetcode.com/problems/valid-parentheses/
+func isValid(s string) bool {
+	var stack []rune
+	for _, r := range s {
+		switch r {
+		case '(', '[', '{':
+			stack = append(stack, r)
+		case ')', ']', '}':
+			if len(stack) == 0 {
+				return false
+			}
+
+			lastIndex := len(stack) - 1
+			top := stack[lastIndex]
+			stack = stack[:lastIndex]
+
+			if r == ')' && top != '(' ||
+				r == ']' && top != '[' ||
+				r == '}' && top != '{' {
+				return false
+			}
+		}
+	}
+
+	return len(stack) == 0
+}
