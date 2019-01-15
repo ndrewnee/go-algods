@@ -1,6 +1,8 @@
 package problems
 
-import "math"
+import (
+	"math"
+)
 
 // Contains solutions for easy problems: https://leetcode.com/problemset/all/?difficulty=Easy
 
@@ -267,4 +269,19 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	return root.Next
+}
+
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+func removeDuplicates(nums []int) int {
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		if nums[j] == nums[i] {
+			continue
+		}
+
+		i++
+		nums[i] = nums[j]
+	}
+
+	return i + 1
 }

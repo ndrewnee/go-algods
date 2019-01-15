@@ -53,3 +53,39 @@ func Test_singleNumber(t *testing.T) {
 		})
 	}
 }
+
+func Test_removeDuplicates(t *testing.T) {
+	type args struct {
+		nums []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+		nums []int
+	}{
+		{
+			name: "1",
+			args: args{
+				nums: []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4},
+			},
+			want: 5,
+			nums: []int{0, 1, 2, 3, 4},
+		},
+		{
+			name: "2",
+			args: args{
+				nums: []int{-1, 0, 0, 0, 0, 3, 3},
+			},
+			want: 3,
+			nums: []int{-1, 0, 3},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := removeDuplicates(tt.args.nums)
+			assert.Equal(t, tt.want, got)
+			assert.Equal(t, tt.nums, tt.args.nums[:tt.want])
+		})
+	}
+}
