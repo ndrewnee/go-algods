@@ -285,3 +285,30 @@ func removeDuplicates(nums []int) int {
 
 	return i + 1
 }
+
+// https://leetcode.com/problems/implement-strstr/
+func strStr(haystack string, needle string) int {
+	length := len(needle)
+	switch {
+	case length == 0:
+		return 0
+	case length > len(haystack):
+		return -1
+	case length == len(haystack):
+		if haystack == needle {
+			return 0
+		}
+
+		return -1
+	}
+
+	diff := len(haystack) - length
+
+	for i := 0; i <= diff; i++ {
+		if haystack[i:i+length] == needle {
+			return i
+		}
+	}
+
+	return -1
+}
